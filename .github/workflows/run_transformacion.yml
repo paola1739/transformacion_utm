@@ -1,24 +1,25 @@
-name: Ejecutar Transformación UTM
+name: Ejecutar transformación UTM
 
 on:
-  workflow_dispatch:
-  schedule:
-    - cron: '0 * * * *'
+  workflow_dispatch: # Ejecutarlo manualmente desde GitHub
 
 jobs:
-  ejecutar:
+  transformacion:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
+    - name: Clonar el repositorio
+      uses: actions/checkout@v3
 
-      - name: Instalar dependencias
-        run: |
-          python -m pip install --upgrade pip
-          pip install arcgis pyproj pandas
+    - name: Configurar Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
 
-      - name: Ejecutar script
-        env:
-          ARCGIS_USERNAME: ${{ secrets.ARCGIS_USERNAME }}
-          ARCGIS_PASSWORD: ${{ secrets.ARCGIS_PASSWORD }}
-        run: |
-          python transformar_coords.py
+    - name: Instalar dependencias
+      run: |
+        pip install arcgis pyproj pandas
+
+    - name: Ejecutar el script de transformación
+      run: |
+        python transformar_coords.py
