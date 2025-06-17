@@ -1,10 +1,7 @@
 name: Ejecutar transformación UTM
 
 on:
-  push:
-    branches:
-      - main
-  workflow_dispatch:
+  workflow_dispatch:  # Esto permite ejecutarlo manualmente o vía API
 
 env:
   GIS_USER: ${{ secrets.GIS_USER }}   # Aquí pasas el usuario guardado en secretos
