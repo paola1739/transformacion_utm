@@ -4,15 +4,19 @@ import pyproj
 import pandas as pd
 import os
 
+def main():
+    # Autenticación
+    gis = GIS("https://www.arcgis.com", username=os.environ["GIS_USER"], password=os.environ["GIS_PASS"])
 
-# Autenticación
-gis = GIS("https://www.arcgis.com", username=os.environ["GIS_USER"], password=os.environ["GIS_PASS"])
+    # Obtener ítem
+    item = gis.content.get("8dcb434e6bce4584abf28bc94a82b68a")
+    if item is None:
+        print("Error: No se encontró el ítem con ese ID.")
+        return
 
-# Obtener ítem
-item = gis.content.get("8dcb434e6bce4584abf28bc94a82b68a")
-layer = item.layers[0]
+    layer = item.layers[0]
 
-# Consulta para obtener registros con coordenadas UTM sin transformar
+    # Consulta para obtener registros con coordenadas UTM sin transformar
     query = layer.query(
         where="utm_x IS NOT NULL AND utm_y IS NOT NULL", 
         out_fields="objectid, utm_x, utm_y", 
