@@ -2,6 +2,8 @@ from arcgis.gis import GIS
 from arcgis.features import FeatureLayerCollection
 import pyproj
 import pandas as pd
+import os
+
 
 # Autenticación
 gis = GIS("https://www.arcgis.com", username=os.environ["coellop_gadmriobamba"], password=os.environ["S0l0Y0paola2837"])
