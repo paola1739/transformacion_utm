@@ -1,10 +1,10 @@
-from arcgis.gis import GIS
+pfrom arcgis.gis import GIS
 from arcgis.features import FeatureLayerCollection
 import pyproj
 import pandas as pd
 
 # Autenticación
-gis = GIS("https://www.arcgis.com", username=os.environ["ARCGIS_USERNAME"], password=os.environ["ARCGIS_PASSWORD"])
+gis = GIS("https://www.arcgis.com", username=os.environ["coellop_gadmriobamba"], password=os.environ["S0l0Y0paola2837"])
 
 # Obtener ítem
 item = gis.content.get("3fa2bcad8ee34479ada0fec1dd4cabf3")
