@@ -9,7 +9,7 @@ import os
 gis = GIS("https://www.arcgis.com", username=os.environ["GIS_USER"], password=os.environ["GIS_PASS"])
 
 # Obtener ítem
-item = gis.content.get("3fa2bcad8ee34479ada0fec1dd4cabf3")
+item = gis.content.get("8dcb434e6bce4584abf28bc94a82b68a")
 layer = item.layers[0]
 
 # Consultar registros pendientes
