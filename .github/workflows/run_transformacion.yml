@@ -3,6 +3,10 @@ name: Ejecutar transformación UTM
 on:
   workflow_dispatch: # Ejecutarlo manualmente desde GitHub
 
+env:
+  GIS_USER: ${{ secrets.GIS_USER }}   # Aquí pasas el usuario guardado en secretos
+  GIS_PASS: ${{ secrets.GIS_PASS }}   # Aquí pasas la contraseña guardada en secretos
+  
 jobs:
   transformacion:
     runs-on: ubuntu-latest
